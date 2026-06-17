@@ -5,6 +5,7 @@ namespace Signifly\Shopify\Tests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Factory;
 use Signifly\Shopify\REST\Cursor;
 use Signifly\Shopify\REST\Resources\ProductResource;
@@ -21,7 +22,7 @@ class ManageProductsTest extends TestCase
         $this->shopify = Factory::fromConfig();
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_products()
     {
         Http::fake([
@@ -41,7 +42,7 @@ class ManageProductsTest extends TestCase
         $this->assertCount(2, $resources);
     }
 
-    /** @test **/
+    #[Test]
     public function it_creates_a_product()
     {
         Http::fake([
@@ -63,7 +64,7 @@ class ManageProductsTest extends TestCase
         $this->assertInstanceOf(ProductResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_finds_a_product()
     {
         Http::fake([
@@ -81,7 +82,7 @@ class ManageProductsTest extends TestCase
         $this->assertInstanceOf(ProductResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_a_product()
     {
         Http::fake([
@@ -105,7 +106,7 @@ class ManageProductsTest extends TestCase
         $this->assertInstanceOf(ProductResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_deletes_a_product()
     {
         Http::fake([
@@ -124,7 +125,7 @@ class ManageProductsTest extends TestCase
         });
     }
 
-    /** @test **/
+    #[Test]
     public function it_counts_products()
     {
         Http::fake([
@@ -142,7 +143,7 @@ class ManageProductsTest extends TestCase
         $this->assertEquals(125, $count);
     }
 
-    /** @test **/
+    #[Test]
     public function it_paginates_products()
     {
         Http::fakeSequence()

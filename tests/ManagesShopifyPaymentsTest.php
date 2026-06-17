@@ -5,6 +5,7 @@ namespace Signifly\Shopify\Tests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Factory;
 use Signifly\Shopify\REST\Resources\BalanceResource;
 use Signifly\Shopify\REST\Resources\DisputeResource;
@@ -23,7 +24,7 @@ class ManagesShopifyPaymentsTest extends TestCase
         $this->shopify = Factory::fromConfig();
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_the_balance()
     {
         Http::fake([
@@ -44,7 +45,7 @@ class ManagesShopifyPaymentsTest extends TestCase
         $this->assertInstanceOf(BalanceResource::class, $resource);
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_a_list_of_disputes()
     {
         Http::fake([
@@ -69,7 +70,7 @@ class ManagesShopifyPaymentsTest extends TestCase
         $this->assertCount(7, $resources);
     }
 
-    /** @test */
+    #[Test]
     public function it_finds_a_dispute()
     {
         Http::fake([
@@ -90,7 +91,7 @@ class ManagesShopifyPaymentsTest extends TestCase
         $this->assertInstanceOf(DisputeResource::class, $resource);
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_a_list_of_payouts()
     {
         Http::fake([
@@ -113,7 +114,7 @@ class ManagesShopifyPaymentsTest extends TestCase
         $this->assertCount(8, $resources);
     }
 
-    /** @test */
+    #[Test]
     public function it_finds_a_payout()
     {
         Http::fake([
@@ -134,7 +135,7 @@ class ManagesShopifyPaymentsTest extends TestCase
         $this->assertInstanceOf(PayoutResource::class, $resource);
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_a_list_of_transactions()
     {
         Http::fake([

@@ -4,6 +4,7 @@ namespace Signifly\Shopify\Tests;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Exceptions\WebhookFailed;
 use Signifly\Shopify\Webhooks\SecretProvider;
 use Signifly\Shopify\Webhooks\Webhook;
@@ -19,7 +20,7 @@ class WebhookControllerTest extends TestCase
         Event::fake();
     }
 
-    /** @test **/
+    #[Test]
     public function it_is_missing_a_signature()
     {
         $response = $this->postJson($this->getUrl());
@@ -28,7 +29,7 @@ class WebhookControllerTest extends TestCase
         $response->assertSee('The request did not contain a header named `X-Shopify-Hmac-Sha256`.');
     }
 
-    /** @test **/
+    #[Test]
     public function it_dispatches_an_event_relative_to_topic_name()
     {
         $signature = app(WebhookValidator::class)->calculateSignature('[]', config('shopify.webhooks.secret'));
@@ -41,7 +42,7 @@ class WebhookControllerTest extends TestCase
         Event::assertDispatched('shopify-webhooks.orders-create');
     }
 
-    /** @test **/
+    #[Test]
     public function it_throws_an_exception_when_hmac_header_is_missing()
     {
         $this->withoutExceptionHandling();
@@ -51,7 +52,7 @@ class WebhookControllerTest extends TestCase
         $this->postJson($this->getUrl());
     }
 
-    /** @test **/
+    #[Test]
     public function it_throws_an_exception_with_an_empty_webhook_secret()
     {
         $this->withoutExceptionHandling();
@@ -66,7 +67,7 @@ class WebhookControllerTest extends TestCase
         $this->postJson($this->getUrl(), [], $this->getValidHeaders());
     }
 
-    /** @test **/
+    #[Test]
     public function it_throws_an_exception_with_invalid_signature()
     {
         $this->withoutExceptionHandling();

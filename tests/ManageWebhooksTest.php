@@ -4,6 +4,7 @@ namespace Signifly\Shopify\Tests;
 
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Factory;
 use Signifly\Shopify\REST\Resources\ApiResource;
 use Signifly\Shopify\Shopify;
@@ -19,7 +20,7 @@ class ManageWebhooksTest extends TestCase
         $this->shopify = Factory::fromConfig();
     }
 
-    /** @test **/
+    #[Test]
     public function it_creates_a_webhook()
     {
         Http::fake([

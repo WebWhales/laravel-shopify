@@ -5,6 +5,7 @@ namespace Signifly\Shopify\Tests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Factory;
 use Signifly\Shopify\REST\Resources\ApiResource;
 use Signifly\Shopify\Shopify;
@@ -20,7 +21,7 @@ class ManagesDiscountsTest extends TestCase
         $this->shopify = Factory::fromConfig();
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_discount_codes()
     {
         Http::fake([
@@ -40,7 +41,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertCount(1, $resources);
     }
 
-    /** @test **/
+    #[Test]
     public function it_creates_a_discount_code()
     {
         Http::fake([
@@ -59,7 +60,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_finds_a_discount_code()
     {
         Http::fake([
@@ -77,7 +78,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_a_discount_code()
     {
         Http::fake([
@@ -96,7 +97,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_deletes_a_discount_code()
     {
         Http::fake([
@@ -113,7 +114,7 @@ class ManagesDiscountsTest extends TestCase
         });
     }
 
-    /** @test **/
+    #[Test]
     public function it_counts_discount_codes()
     {
         Http::fake([
@@ -131,7 +132,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertEquals(125, $count);
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_price_rules()
     {
         Http::fake([
@@ -151,7 +152,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertCount(2, $resources);
     }
 
-    /** @test **/
+    #[Test]
     public function it_creates_a_price_rule()
     {
         Http::fake([
@@ -179,7 +180,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_finds_a_price_rule()
     {
         Http::fake([
@@ -197,7 +198,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_a_price_rule()
     {
         Http::fake([
@@ -218,7 +219,7 @@ class ManagesDiscountsTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_deletes_a_price_rule()
     {
         Http::fake([
@@ -235,7 +236,7 @@ class ManagesDiscountsTest extends TestCase
         });
     }
 
-    /** @test **/
+    #[Test]
     public function it_counts_price_rules()
     {
         Http::fake([

@@ -5,6 +5,7 @@ namespace Signifly\Shopify\Tests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Factory;
 use Signifly\Shopify\REST\Cursor;
 use Signifly\Shopify\REST\Resources\ApiResource;
@@ -25,7 +26,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->shopify = Factory::fromConfig();
     }
 
-    /** @test **/
+    #[Test]
     public function it_creates_a_redirect()
     {
         Http::fake([
@@ -44,7 +45,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_counts_redirects()
     {
         Http::fake([
@@ -62,7 +63,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertEquals(42, $count);
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_redirects()
     {
         Http::fake([
@@ -83,7 +84,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertCount(3, $resources);
     }
 
-    /** @test **/
+    #[Test]
     public function it_finds_a_redirect()
     {
         Http::fake([
@@ -101,7 +102,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_a_redirect()
     {
         Http::fake([
@@ -125,7 +126,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $resource);
     }
 
-    /** @test * */
+    #[Test]
     public function it_deletes_a_redirect()
     {
         Http::fake([
@@ -144,7 +145,7 @@ class ManagesOnlineStoreTest extends TestCase
         });
     }
 
-    /** @test **/
+    #[Test]
     public function it_paginates_redirects()
     {
         Http::fakeSequence()
@@ -187,7 +188,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(BlogResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_counts_blogs()
     {
         Http::fake([
@@ -205,7 +206,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertEquals(42, $count);
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_blogs()
     {
         Http::fake([
@@ -225,7 +226,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertCount(2, $resources);
     }
 
-    /** @test **/
+    #[Test]
     public function it_finds_a_blog()
     {
         Http::fake([
@@ -243,7 +244,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(BlogResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_a_blog()
     {
         Http::fake([
@@ -266,7 +267,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(BlogResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_deletes_a_blog()
     {
         Http::fake([
@@ -285,7 +286,7 @@ class ManagesOnlineStoreTest extends TestCase
         });
     }
 
-    /** @test **/
+    #[Test]
     public function it_paginates_blogs()
     {
         Http::fakeSequence()
@@ -308,7 +309,7 @@ class ManagesOnlineStoreTest extends TestCase
         Http::assertSequencesAreEmpty();
     }
 
-    /** @test */
+    #[Test]
     public function it_creates_a_page()
     {
         Http::fake([
@@ -329,7 +330,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(PageResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_counts_pages()
     {
         Http::fake([
@@ -347,7 +348,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertEquals(42, $count);
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_pages()
     {
         Http::fake([
@@ -367,7 +368,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertCount(4, $resources);
     }
 
-    /** @test **/
+    #[Test]
     public function it_finds_a_page()
     {
         Http::fake([
@@ -385,7 +386,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(PageResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_a_page()
     {
         Http::fake([
@@ -408,7 +409,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(PageResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_deletes_a_page()
     {
         Http::fake([
@@ -427,7 +428,7 @@ class ManagesOnlineStoreTest extends TestCase
         });
     }
 
-    /** @test **/
+    #[Test]
     public function it_paginates_pages()
     {
         Http::fakeSequence()
@@ -450,7 +451,7 @@ class ManagesOnlineStoreTest extends TestCase
         Http::assertSequencesAreEmpty();
     }
 
-    /** @test */
+    #[Test]
     public function it_creates_an_article()
     {
         Http::fake([
@@ -472,7 +473,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(ArticleResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_counts_articles()
     {
         Http::fake([
@@ -490,7 +491,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertEquals(42, $count);
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_articles()
     {
         Http::fake([
@@ -510,7 +511,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertCount(4, $resources);
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_article_authors()
     {
         Http::fake([
@@ -529,7 +530,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertEquals(['Foo', 'Bar'], $authors);
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_article_tags()
     {
         Http::fake([
@@ -548,7 +549,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertEquals(['Announcement', 'New'], $tags);
     }
 
-    /** @test **/
+    #[Test]
     public function it_finds_an_article()
     {
         Http::fake([
@@ -566,7 +567,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(ArticleResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_an_article()
     {
         Http::fake([
@@ -589,7 +590,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(ArticleResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_deletes_an_article()
     {
         Http::fake([
@@ -608,7 +609,7 @@ class ManagesOnlineStoreTest extends TestCase
         });
     }
 
-    /** @test **/
+    #[Test]
     public function it_paginates_articles()
     {
         Http::fakeSequence()
@@ -631,7 +632,7 @@ class ManagesOnlineStoreTest extends TestCase
         Http::assertSequencesAreEmpty();
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_assets()
     {
         Http::fake([
@@ -656,7 +657,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertCount(27, $resources);
     }
 
-    /** @test **/
+    #[Test]
     public function it_finds_an_asset()
     {
         Http::fake([
@@ -678,7 +679,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(AssetResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_an_asset()
     {
         Http::fake([
@@ -703,7 +704,7 @@ class ManagesOnlineStoreTest extends TestCase
         $this->assertInstanceOf(AssetResource::class, $resource);
     }
 
-    /** @test **/
+    #[Test]
     public function it_deletes_an_asset()
     {
         Http::fake([

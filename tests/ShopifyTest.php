@@ -2,11 +2,12 @@
 
 namespace Signifly\Shopify\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Shopify;
 
 class ShopifyTest extends TestCase
 {
-    /** @test **/
+    #[Test]
     public function it_returns_the_shopify_instance_from_the_container()
     {
         $shopify = $this->app->make('shopify');
@@ -14,7 +15,7 @@ class ShopifyTest extends TestCase
         $this->assertInstanceOf(Shopify::class, $shopify);
     }
 
-    /** @test **/
+    #[Test]
     public function it_returns_the_same_shopify_instance_from_the_container()
     {
         $shopifyA = $this->app->make('shopify');
@@ -23,7 +24,7 @@ class ShopifyTest extends TestCase
         $this->assertSame($shopifyA, $shopifyB);
     }
 
-    /** @test **/
+    #[Test]
     public function it_memoizes_the_http_client()
     {
         $shopify = $this->app->make('shopify');
@@ -34,7 +35,7 @@ class ShopifyTest extends TestCase
         $this->assertSame($clientA, $clientB);
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_credentials_and_resets_client()
     {
         $shopify = $this->app->make('shopify');
