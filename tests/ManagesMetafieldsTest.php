@@ -49,7 +49,7 @@ class ManagesMetafieldsTest extends TestCase
         $this->assertInstanceOf(MetafieldResource::class, $metafield);
     }
 
-    public function provideMetafieldCreationData(): array
+    public static function provideMetafieldCreationData(): array
     {
         $id = 1234;
 
@@ -82,7 +82,7 @@ class ManagesMetafieldsTest extends TestCase
         $this->assertEquals(5, $count);
     }
 
-    public function provideMetafieldCountData()
+    public static function provideMetafieldCountData()
     {
         $id = 1234;
 
@@ -117,7 +117,7 @@ class ManagesMetafieldsTest extends TestCase
         $this->assertInstanceOf(MetafieldResource::class, $metafields->first());
     }
 
-    public function provideGetMetafieldsData()
+    public static function provideGetMetafieldsData()
     {
         $id = 1234;
 
