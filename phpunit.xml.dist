@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         backupGlobals="false"
-         backupStaticAttributes="false"
-         colors="true"
-         verbose="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite name="Signifly Test Suite">
-            <directory>tests</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
-    <php>
-        <env name="SHOPIFY_ACCESS_TOKEN" value="shopify.access_token.goes.here" />
-        <env name="SHOPIFY_DOMAIN" value="shopify-domain.goes.here" />
-        <env name="SHOPIFY_API_VERSION" value="2019-07" />
-        <env name="SHOPIFY_WEBHOOK_SECRET" value="secret" />
-    </php>
+<phpunit bootstrap="vendor/autoload.php" backupGlobals="false" colors="true" processIsolation="false" stopOnFailure="false" cacheDirectory=".phpunit.cache" backupStaticProperties="false">
+  <testsuites>
+    <testsuite name="Signifly Test Suite">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="SHOPIFY_ACCESS_TOKEN" value="shopify.access_token.goes.here"/>
+    <env name="SHOPIFY_DOMAIN" value="shopify-domain.goes.here"/>
+    <env name="SHOPIFY_API_VERSION" value="2019-07"/>
+    <env name="SHOPIFY_WEBHOOK_SECRET" value="secret"/>
+  </php>
+  <source>
+    <include>
+      <directory suffix=".php">src/</directory>
+    </include>
+  </source>
 </phpunit>

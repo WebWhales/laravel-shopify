@@ -5,6 +5,7 @@ namespace Signifly\Shopify\Tests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Factory;
 use Signifly\Shopify\REST\Resources\ApiResource;
 use Signifly\Shopify\Shopify;
@@ -20,7 +21,7 @@ class ManagesInventoryTest extends TestCase
         $this->shopify = Factory::fromConfig();
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_locations_count()
     {
         Http::fakeSequence()->push($this->fixture('locations.count'));
@@ -36,7 +37,7 @@ class ManagesInventoryTest extends TestCase
         });
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_locations()
     {
         Http::fakeSequence()->push($this->fixture('locations.all'));
@@ -54,7 +55,7 @@ class ManagesInventoryTest extends TestCase
         $this->assertCount(5, $locations);
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_a_location()
     {
         Http::fakeSequence()->push($this->fixture('locations.show'));
@@ -70,7 +71,7 @@ class ManagesInventoryTest extends TestCase
         $this->assertInstanceOf(ApiResource::class, $location);
     }
 
-    /** @test **/
+    #[Test]
     public function it_gets_inventory_levels_for_a_location()
     {
         Http::fakeSequence()->push($this->fixture('locations.inventoryLevels'));

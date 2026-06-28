@@ -5,6 +5,8 @@ namespace Signifly\Shopify\Tests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Signifly\Shopify\Factory;
 use Signifly\Shopify\REST\Resources\MetafieldResource;
 use Signifly\Shopify\Shopify;
@@ -20,10 +22,8 @@ class ManagesMetafieldsTest extends TestCase
         $this->shopify = Factory::fromConfig();
     }
 
-    /**
-     * @test
-     * @dataProvider provideMetafieldCreationData
-     */
+    #[Test]
+    #[DataProvider('provideMetafieldCreationData')]
     public function it_creates_a_metafield(string $method, string $expectedUri, array $params = [])
     {
         Http::fakeSequence()->push($this->fixture('metafields.show'), 200);
@@ -49,7 +49,7 @@ class ManagesMetafieldsTest extends TestCase
         $this->assertInstanceOf(MetafieldResource::class, $metafield);
     }
 
-    public function provideMetafieldCreationData(): array
+    public static function provideMetafieldCreationData(): array
     {
         $id = 1234;
 
@@ -63,10 +63,8 @@ class ManagesMetafieldsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider provideMetafieldCountData
-     */
+    #[Test]
+    #[DataProvider('provideMetafieldCountData')]
     public function it_gets_metafields_count(string $method, string $expectedUri, array $params = [])
     {
         Http::fakeSequence()->push(['count' => 5], 200);
@@ -82,7 +80,7 @@ class ManagesMetafieldsTest extends TestCase
         $this->assertEquals(5, $count);
     }
 
-    public function provideMetafieldCountData()
+    public static function provideMetafieldCountData()
     {
         $id = 1234;
 
@@ -96,10 +94,8 @@ class ManagesMetafieldsTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider provideGetMetafieldsData
-     */
+    #[Test]
+    #[DataProvider('provideGetMetafieldsData')]
     public function it_gets_metafields(string $method, string $expectedUri, array $params = [])
     {
         Http::fakeSequence()->push($this->fixture('metafields.all'), 200);
@@ -117,7 +113,7 @@ class ManagesMetafieldsTest extends TestCase
         $this->assertInstanceOf(MetafieldResource::class, $metafields->first());
     }
 
-    public function provideGetMetafieldsData()
+    public static function provideGetMetafieldsData()
     {
         $id = 1234;
 
@@ -131,7 +127,7 @@ class ManagesMetafieldsTest extends TestCase
         ];
     }
 
-    /** @test **/
+    #[Test]
     public function it_updates_a_metafield()
     {
         Http::fakeSequence()->push($this->fixture('metafields.show'), 200);
@@ -149,7 +145,7 @@ class ManagesMetafieldsTest extends TestCase
         $this->assertInstanceOf(MetafieldResource::class, $metafield);
     }
 
-    /** @test **/
+    #[Test]
     public function it_deletes_a_metafield()
     {
         Http::fakeSequence()->pushStatus(200);
